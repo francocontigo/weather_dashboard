@@ -41,6 +41,8 @@ df_selection = df.query(
 st.title(":umbrella: Weather Dashboard")
 st.markdown("##")
 
+st.subheader(":book: Stats!")
+
 # KPI's
 max_temp = int(df_selection["temp_max"].max())
 min_temp = int(df_selection["temp_min"].min())
@@ -49,6 +51,11 @@ avg_temp = int(avg_temp_series["temp_max"])
 avg_temp_current = int(df_selection["temp_current"].mean())
 
 first_column, second_column, third_column, fourth_column = st.columns(4)
+first_column = first_column.container(border=True)
+second_column = second_column.container(border=True)
+third_column = third_column.container(border=True)
+fourth_column = fourth_column.container(border=True)
+
 with first_column:
     st.subheader("Max Temperature: ")
     st.subheader(f"°C {max_temp}")
@@ -58,16 +65,16 @@ with second_column:
     st.subheader(f"°C {min_temp}")
     
 with third_column:
-    st.subheader("Avg Day Temperature: ")
+    st.subheader("Avg Temperature: ")
     st.subheader(f"°C {avg_temp}")
     
 with fourth_column:
-    st.subheader("Avg Temperature in Scheduled Time: ")
+    st.subheader("Avg Scheduled Temperature: ")
     st.subheader(f"°C {avg_temp_current}")
     
 st.markdown("---")
 
-st.subheader(":clipboard: DataFrame Head !")
+st.subheader(":clipboard: DataFrame Head!")
 st.dataframe(df_selection.head())
 
 st.markdown("---")
@@ -111,10 +118,14 @@ fig_unique_desc_day.update_layout(
 )
 
 left_column1, right_column1 = st.columns(2)
+left_column1 = left_column1.container(border=True)
+right_column1 = right_column1.container(border=True)
 left_column1.plotly_chart(fig_temp_current_over_time, use_container_width=True)
 right_column1.plotly_chart(fig_unique_desc_day, use_container_width=True)
 
 left_column2, right_column2 = st.columns(2)
+left_column2 = left_column2.container(border=True)
+right_column2 = right_column2.container(border=True)
 left_column2.plotly_chart(fig_temp_max_over_time, use_container_width=True)
 right_column2.plotly_chart(fig_temp_min_over_time, use_container_width=True)
 
