@@ -1,1 +1,1 @@
-0 12 * * * root /usr/bin/python3 /app/scraping.py >> /var/log/scraping.log 2>&1
+0 12 * * * root /usr/bin/python3 /app/scraping.py >> /dev/null 2>&1
